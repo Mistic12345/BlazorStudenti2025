@@ -10,8 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-var app = builder.Build();
-
 var conn = builder.Configuration.GetConnectionString("strConnection")
     ?? throw new InvalidOperationException("Connection string 'strConnection' not a found");
 
@@ -19,6 +17,9 @@ builder.Services.AddDbContext<WebAppContext>(options =>
 options.UseSqlServer(conn));
 
 builder.Services.AddScoped<IStudentiService, StudentiService>();
+builder.Services.AddScoped<StudentiService>();
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -1,8 +1,48 @@
 ﻿@page "/studenti/aggiungi"
 
-<h3>AggiungiStudente</h3>
+<h3>Aggiungi Nuovo Studente</h3>
 
+<EditForm Model ="studente" OnValidSubmit="SalvaStudente" FormName="AggiungiStudente">
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <InputText class="form-control" @bind-Value="studente.Nome"/>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Cognome</label>
+        <InputText class="form-control" @bind-Value="studente.Cognome" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Età</label>
+        <InputNumber class="form-control" @bind-Value="studente.Eta" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Data Di Nascita</label>
+        <InputDate class="form-control" @bind-Value="studente.DataNascita" />
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Carica il documento</label>
+        <InputFile class="form-control" @bind-Value="studente.Doc" />
+    </div>
+</EditForm>
 
 @code {
+    public class Studente
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; } = string.Empty;
+        public string Cognome { get; set; } = string.Empty;
+        public int Eta { get; set; }
+        public DateTime DataNascita { get; set; }
+        public string Doc { get; set; }
+    }
 
+    private Studente studente = new();
+    private void SalvaStudente(EditContext args)
+    {
+        throw new NotImplementedException();
+    }
 }

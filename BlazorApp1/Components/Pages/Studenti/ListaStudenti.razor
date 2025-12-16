@@ -5,7 +5,7 @@
 
 <h3>Studenti</h3>
 
-
+<a href="/studenti/aggiungi" class="btn btn-primary mb-2">Aggiungi Studente</a>
 
 <table class="table table-light table-bordered">
     <thead>
@@ -14,28 +14,29 @@
             <th>Nome</th>
             <th>Cognome</th>
             <th>Età</th>
+            <th>Data Di Nascita</th>
+            <th>Documenti</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        @foreach(var s in studenti)
+        @foreach (var s in studenti)
         {
-            
-        <tr>
-            <td>@s.Id</td>
-            <td>@s.Nome</td>
-            <td>@s.Cognome</td>
-            <td>@s.Eta</td>
-            <td>
-                    <button class="btn btn-primary btn-sm"">Modifica</button>
-                <button class="btn btn-danger btn-sm">Elimina</button>
-
-            </td>
-        </tr>
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Nome</td>
+                <td>@s.Cognome</td>
+                <td>@s.Eta</td>
+                <td>@s.DataNascita</td>
+                <td>@s.Doc</td>
+                <td>
+                    <button class="btn btn-primary btn-sm">Modifica</button>
+                    <button class="btn btn-danger btn-sm">Elimina</button>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
-
 
 
 @code {
@@ -44,6 +45,5 @@
     protected override async Task OnInitializedAsync()
     {
         studenti = await StudentiService.GetAllStudentiAsync();
-
     }
 }
